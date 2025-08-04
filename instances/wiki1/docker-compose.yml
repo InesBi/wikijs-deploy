@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  wiki:
+    image: requarks/wiki:latest
+    container_name: wiki1
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    environment:
+      - DB_TYPE=sqlite
+      - DB_FILE=/data/wiki.db
+    volumes:
+      - wiki1-data:/data
+
+volumes:
+  wiki1-data:
